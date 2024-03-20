@@ -1,0 +1,23 @@
+@import "{}/node_modules/bootstrap/scss/functions";
+@import "{}/node_modules/bootstrap/scss/variables";
+@import "{}/node_modules/bootstrap/scss/mixins";
+
+$body-bg: var(--tg-theme-bg-color);
+$body-color: var(--tg-theme-text-color);
+$text-color: var(--tg-theme-hint-color);
+$link-color: var(--tg-theme-link-color);
+$primary: var(--tg-theme-button-color);
+$secondary: var(--tg-theme-secondary-bg-color);
+$info: var(--tg-theme-accent-text-color);
+$card-bg: var(--tg-theme-section-bg-color);
+$card-cap-bg: var(--tg-theme-section-header-text-color);
+$text-muted: var(--tg-theme-subtitle-text-color);
+$danger: var(--tg-theme-destructive-text-color);
+
+.btn-primary {
+  color: var(--tg-theme-button-text-color);
+}
+
+// h1, h2, h3, h4, h5, h6 {
+//   color: var(--tg-theme-header-bg-color);
+// }
