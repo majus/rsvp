@@ -1,5 +1,5 @@
-import { Meteor } from 'meteor/meteor';
-import { WebApp } from 'miku-web-app';
+// import { Meteor } from 'meteor/meteor';
+// import { WebApp } from 'miku-web-app';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import './ui/layout';
 import './ui/home';
@@ -9,11 +9,11 @@ import './ui/home';
 //   triggersEnter: [(context, redirect) => redirect('xxx')],
 // });
 
-FlowRouter.wait();
-Meteor.startup(async () => {
-  await WebApp.ready();
-  FlowRouter.initialize();
-});
+// FlowRouter.wait();
+// Meteor.startup(async () => {
+//   await WebApp.ready();
+//   FlowRouter.initialize();
+// });
 
 FlowRouter.route('/', {
   action() {
