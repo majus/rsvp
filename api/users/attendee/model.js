@@ -5,7 +5,7 @@ export const Attendee = User.inherit({
   name: 'Attendee',
   fields: {
     'wallet': String,
-    'authorisation': Boolean,
+    'authorisation': String,
   },
   helpers: {
     registrations() {
