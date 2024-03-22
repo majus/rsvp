@@ -21,6 +21,7 @@
     "node-abort-controller": "^3.1.1",
     "node-fetch": "^3.3.2",
     "popper.js": "^1.16.1",
+    "query-string": "^8.2.0",
     "simpl-schema": "^3.4.1"
   },
   "devDependencies": {

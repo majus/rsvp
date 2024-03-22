@@ -1,5 +1,17 @@
 <template name="Home">
   <h1>RSVP</h1>
+  <div>
+    Status:
+    {{#with currentUser.profile}}
+      logged in as {{firstName}} {{lastName}}
+      {{#if telegram}}
+        @{{telegram}}
+      {{/if}}
+      {{else}}
+        Not logged in
+    {{/with}}
+  </div>
+  <hr>
   <p>Et dolor sapiente vel. Eos <a href="#">eligendi expedita sint consequatur</a> qui deserunt. Velit qui sint ea
     facilis aut ipsam fuga labore. Blanditiis est tempore facilis voluptatem possimus. Vero dolores cum eveniet odit
     quia et itaque. Temporibus consequatur sapiente asperiores dignissimos quis et modi aut. Totam similique ab et et
