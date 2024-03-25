@@ -1,7 +1,9 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Class } from 'meteor/jagi:astronomy';
 import { Registration } from '../registrations/model';
 import { Organiser } from '../users';
+import { Image } from '../images';
 
 export const Event = Class.create({
   name: 'Events',
@@ -13,7 +15,7 @@ export const Event = Class.create({
     'description': String,
     'imageId': String,
     'wallet': String,
-    'deposit': Number,
+    'depositAmount': Number,
   },
   helpers: {
     registrations() {
@@ -21,6 +23,15 @@ export const Event = Class.create({
     },
     organiser() {
       return Organiser.findOne(this.organiserId);
+    },
+    image() {
+      return Image.findOne(this.imageId);
+    },
+    isStarted() {
+      return Boolean(this.startsAt);
+    },
+    formatDeposit() {
+      return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
     },
   },
   secured: false,

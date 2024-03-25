@@ -14,11 +14,34 @@ const Profile = Class.create({
   },
 });
 
+const TelegramService = Class.create({
+  name: 'TelegramService',
+  /* No collection attribute */
+  fields: {
+    'id': String,
+    'userName': String,
+    'createdAt': Date,
+  },
+});
+
+const Services = Class.create({
+  name: 'Services',
+  /* No collection attribute */
+  fields: {
+    telegram: {
+      type: TelegramService,
+      optional: true,
+    },
+  },
+});
+
 export const User = Class.create({
   name: 'User',
   collection: Meteor.users,
+  typeField: 'role',
   fields: {
     'profile': Profile,
+    'services': Services,
   },
   secured: false,
 });
