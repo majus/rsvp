@@ -19,7 +19,7 @@ const TelegramService = Class.create({
   /* No collection attribute */
   fields: {
     'id': String,
-    'userName': String,
+    'username': String,
     'createdAt': Date,
   },
 });

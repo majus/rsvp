@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { Class } from 'meteor/jagi:astronomy';
+import { isBoolean } from 'lodash';
 import { Event } from '../events';
 import { Attendee } from '../users';
 
@@ -13,7 +14,7 @@ export const Registration = Class.create({
       type: String,
       optional: true,
     },
-    'completed': {
+    'confirmed': {
       type: Boolean,
       optional: true,
     },
@@ -39,12 +40,8 @@ export const Registration = Class.create({
     attendee() {
       return Attendee.findOne(this.attendeeId);
     },
-    isCompleted() {
-      if (this.completed === true || this.completed === false) {
-        return true;
-      } else {
-        return false;
-      }
+    isConfirmed() {
+      return isBoolean(this.confirmed);
     },
     isRefunded () {
       return Boolean(this.refundHash);

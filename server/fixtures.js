@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import moment from 'moment';
-import { Organiser, Attendee } from '/api/users';
 import { Registration } from '/api/registrations';
 import { Image } from '../api/images';
 import { Event } from '/api/events';
@@ -28,16 +27,15 @@ Meteor.startup(() => {
       'startsAt': moment().add(1, 'hour').toDate(),
       'description': 'Internatioanal AI conference',
       'imageId': imageId,
-      'wallet': 'walletAddress',
       'depositAmount': 0,
     });
     event.save();
     // Create Attendee users
-    const attendeeIds = [
+    [
       ['Ada', 'Lovelace'],
       ['Alan', 'Turing'],
       ['Sam', 'Smith'],
-    ].map(([firstName, lastName], index) => {
+    ].forEach(([firstName, lastName], index) => {
       const attendeeId = Accounts.createUser({
         username: `User${index}`,
         password: 'Passw0rd',
@@ -46,11 +44,8 @@ Meteor.startup(() => {
           lastName: lastName,
         },
       });
-      return attendeeId;
-    });
-    // Register attendee users
-    const attendees = Meteor.users.find({ _id: { $in: attendeeIds } }).fetch();
-    attendees.forEach((attendee) => {
+      // Register attendee users
+      const attendee = Meteor.users.findOne(attendeeId);
       const registration = new Registration({
         'attendeeId': attendee._id,
         'eventId': event._id,
@@ -59,6 +54,7 @@ Meteor.startup(() => {
         'createdAt': new Date(),
       });
       registration.save();
+      return attendeeId;
     });
   }
 });

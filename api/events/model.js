@@ -14,7 +14,6 @@ export const Event = Class.create({
     'startsAt': Date,
     'description': String,
     'imageId': String,
-    'wallet': String,
     'depositAmount': Number,
   },
   helpers: {
@@ -28,7 +27,7 @@ export const Event = Class.create({
       return Image.findOne(this.imageId);
     },
     isStarted() {
-      return Boolean(this.startsAt);
+      return this.startsAt < new Date();
     },
     formatDeposit() {
       return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
