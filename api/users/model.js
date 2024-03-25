@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Class } from 'meteor/jagi:astronomy';
 
 const Profile = Class.create({
-  name: 'Profile',
+  name: 'UserProfile',
   /* No collection attribute */
   fields: {
     'firstName': String,
@@ -15,7 +15,7 @@ const Profile = Class.create({
 });
 
 const TelegramService = Class.create({
-  name: 'TelegramService',
+  name: 'TelegramUserService',
   /* No collection attribute */
   fields: {
     'id': String,
@@ -25,12 +25,17 @@ const TelegramService = Class.create({
 });
 
 const Services = Class.create({
-  name: 'Services',
+  name: 'UserServices',
   /* No collection attribute */
   fields: {
     telegram: {
       type: TelegramService,
       optional: true,
+    },
+  },
+  helpers: {
+    name() {
+      return `${this.profile.firstName} ${this.profile.lastName}`;
     },
   },
 });

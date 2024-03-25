@@ -19,11 +19,11 @@ export const Registration = Class.create({
       optional: true,
     },
     'depositAmount': Number,
-    'depostiAddress': {
+    'depositAddress': {
       type: String,
       optional: true,
     },
-    'depostitHash': {
+    'depositHash': {
       type: String,
       optional: true,
     },
@@ -40,14 +40,28 @@ export const Registration = Class.create({
     attendee() {
       return Attendee.findOne(this.attendeeId);
     },
-    isConfirmed() {
+    isCompleted() {
       return isBoolean(this.confirmed);
     },
     isRefunded () {
       return Boolean(this.refundHash);
     },
     isDeposited () {
-      return Boolean(this.depostitHash);
+      return Boolean(this.depositHash);
+    },
+  },
+  events: {
+    beforeInsert(e) {
+      const registration = e.currentTarget;
+      const event = registration.event();
+      registration.depositAmount = event.depositAmount;
+    },
+  },
+  behaviors: {
+    timestamp: {
+      hasCreatedField: true,
+      createdFieldName: 'createdAt',
+      hasUpdatedField: false,
     },
   },
   secured: false,

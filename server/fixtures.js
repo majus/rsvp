@@ -50,8 +50,6 @@ Meteor.startup(() => {
         'attendeeId': attendee._id,
         'eventId': event._id,
         'comment': `Comment from ${attendee.profile.firstName} ${attendee.profile.lastName}`,
-        'depositAmount': 0,
-        'createdAt': new Date(),
       });
       registration.save();
       return attendeeId;
