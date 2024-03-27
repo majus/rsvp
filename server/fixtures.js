@@ -17,10 +17,7 @@ Meteor.startup(() => {
     });
     // Create event
     const imageId = Random.id();
-    Image.load('https://placehold.co/640x360', {
-      fileName: 'event.png',
-      fileId: imageId,
-    });
+    Image.load('https://placehold.co/640x360/event.png', { fileId: imageId });
     const event = new Event({
       'name': 'AI conference',
       'organiserId': organiserId,

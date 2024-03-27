@@ -31,7 +31,6 @@ export const Registration = Class.create({
       type: String,
       optional: true,
     },
-    'createdAt': Date,
   },
   helpers: {
     event() {

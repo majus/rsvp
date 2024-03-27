@@ -14,7 +14,6 @@ export const Organiser = User.inherit({
   name: 'Organiser',
   fields: {
     'emails': [UserEmail],
-    'password': String,
   },
   helpers: {
     events() {
