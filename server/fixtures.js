@@ -42,11 +42,10 @@ Meteor.startup(() => {
         },
       });
       // Register attendee users
-      const attendee = Meteor.users.findOne(attendeeId);
       const registration = new Registration({
-        'attendeeId': attendee._id,
+        'attendeeId': attendeeId,
         'eventId': event._id,
-        'comment': `Comment from ${attendee.profile.firstName} ${attendee.profile.lastName}`,
+        'comment': `Comment from ${firstName} ${lastName}`,
       });
       registration.save();
       return attendeeId;
