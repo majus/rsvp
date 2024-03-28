@@ -38,3 +38,8 @@ imajus:string-helpers
 fourseven:scss
 littledata:synced-cron
 accounts-base
+jagi:astronomy
+
+# Accounts
+accounts-password
+jagi:astronomy-timestamp-behavior
