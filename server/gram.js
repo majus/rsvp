@@ -6,8 +6,12 @@ const { wallet, tick } = Meteor.settings.public;
 
 // Get all gram20 tokens balances
 Meteor.startup(async () => {
-  const { balance } = await getBalanceByTick(wallet, tick);
-  console.log(`Connected: ${wallet} (${balance} ${tick.toUpperCase()})`);
+  try {
+    const { balance } = await getBalanceByTick(wallet, tick);
+    console.log(`Connected: ${wallet} (${balance} ${tick.toUpperCase()})`);
+  } catch (err) {
+    console.error(err.message, err.stack);
+  }
 });
 
 // Get gram20 token info by tick
@@ -53,16 +57,20 @@ Meteor.startup(async () => {
    *  lt: number;
    * }
    */
-  const history = await getHistoryByTick(wallet, tick);
-  for (const { delta, tick, time, comment } of history) {
-    console.log(
-      [
-        new Date(time).toISOString(),
-        '| Transfer of',
-        delta,
-        `${tick.toUpperCase()}:`,
-        `"${comment}"`,
-      ].join(' '),
-    );
+  try {
+    const history = await getHistoryByTick(wallet, tick);
+    for (const { delta, tick, time, comment } of history) {
+      console.log(
+        [
+          new Date(time).toISOString(),
+          '| Transfer of',
+          delta > 0 ? `+${delta}` : delta,
+          `${tick.toUpperCase()}:`,
+          `"${comment}"`,
+        ].join(' '),
+      );
+    }
+  } catch (err) {
+    console.error(err.message, err.stack);
   }
 });
