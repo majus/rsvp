@@ -16,6 +16,12 @@ export const eventSchema = new SimpleSchema({
   imageId: {
     type: String,
     label: 'Image',
+    autoform: {
+      afFieldInput: {
+        type: 'fileUpload',
+        collection: 'images',
+      },
+    },
   },
   depositAmount: {
     type: Number,
