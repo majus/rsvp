@@ -43,3 +43,5 @@ jagi:astronomy
 # Accounts
 accounts-password
 jagi:astronomy-timestamp-behavior
+imajus:useraccounts-bootstrap4
+useraccounts:flow-routing-extra
