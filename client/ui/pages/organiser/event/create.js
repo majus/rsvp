@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import { TemplateController } from 'meteor/space:template-controller';
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
@@ -17,11 +16,8 @@ TemplateController('Organiser_event_create', {
 AutoForm.addHooks('submitCreate', {
   onSubmit(data) {
     this.event.preventDefault();
-    const event = new Event({
-      organiserId: Meteor.userId(),
-      ...data,
-    });
+    const event = new Event(data);
     event.save();
-    FlowRouter.go('Events.list');
+    FlowRouter.go('Events.browse');
   },
 });

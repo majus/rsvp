@@ -22,7 +22,7 @@
           <td class="align-middle">{{event.formatDate}}</td>
           <td class="align-middle">
             <div class="btn-group" role="group" >
-              <a href="{{pathFor 'Events.edit' _id=event._id}}" role="button" class="btn btn-outline-success">Edit</a>
+              <a href="{{pathFor 'Events.edit' event}}" role="button" class="btn btn-outline-success">Edit</a>
               <button type="button" class="btn btn-danger" data-action="delete" data-id="{{event._id}}">Delete</button>
             </div>
           </td>

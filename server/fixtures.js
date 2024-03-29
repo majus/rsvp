@@ -25,7 +25,7 @@ Meteor.startup(() => {
         'name': 'AI conference',
         'organiserId': organiserId,
         'startsAt': moment().add(1, 'hour').toDate(),
-        'description': `Internatioanal AI conference ${index}`,
+        'description': `International AI conference ${index}`,
         'imageId': imageId,
         'depositAmount': 10,
       });

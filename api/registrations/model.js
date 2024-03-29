@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Class } from 'meteor/jagi:astronomy';
 import { isBoolean } from 'lodash';
@@ -47,6 +48,9 @@ export const Registration = Class.create({
     },
     isDeposited() {
       return Boolean(this.depositHash);
+    },
+    formatDeposit() {
+      return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
     },
   },
   events: {

@@ -21,11 +21,8 @@ AutoForm.addHooks('submitUpdate', {
   onSubmit(data) {
     this.event.preventDefault();
     Event.update(FlowRouter.getParam('_id'), {
-      $set: {
-        organiserId: Meteor.userId(),
-        data,
-      },
+      $set: data,
     });
-    FlowRouter.go('Events.list');
+    FlowRouter.go('Events.browse');
   },
 });
