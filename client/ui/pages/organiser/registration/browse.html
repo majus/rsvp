@@ -1,0 +1,38 @@
+<template name="Organiser_registrations">
+  <h1>RSVPs</h1>
+  <hr>
+  {{#card}}
+    <table class="table table-hover table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Attendee</th>
+          <th scope="col">Event</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Completed</th>
+          <th scope="col">Deposit Ammount</th>
+          <th scope="col">Deposited</th>
+          <th scope="col">Refunded</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each registration in registrations}}
+        <tr scope="row">
+          <td class="align-middle">{{registration.attendee.name}}</td>
+          <td class="align-middle">{{registration.event.name}}</td>
+          <td class="align-middle">{{registration.comment}}</td>
+          <td class="align-middle">{{when registration.isCompleted yes='Yes' no='No'}}</td>
+          <td class="align-middle">{{registration.formatDeposit}}</td>
+          <td class="align-middle">{{when registration.isDeposited yes='Yes' no='No'}}</td>
+          <td class="align-middle">{{when registration.isRefunded yes='Yes' no='No'}}</td>
+          <td class="align-middle">
+            <div class="btn-group" role="group" >
+              <button type="button" class="btn btn-outline-success" data-action="confirm" data-id="{{registration._id}}">Confirm</button>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/card}}
+</template>

@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Class } from 'meteor/jagi:astronomy';
 import { isBoolean } from 'lodash';
@@ -42,11 +43,14 @@ export const Registration = Class.create({
     isCompleted() {
       return isBoolean(this.confirmed);
     },
-    isRefunded () {
+    isRefunded() {
       return Boolean(this.refundHash);
     },
-    isDeposited () {
+    isDeposited() {
       return Boolean(this.depositHash);
+    },
+    formatDeposit() {
+      return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
     },
   },
   events: {

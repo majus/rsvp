@@ -1,0 +1,34 @@
+<template name="Organiser_events">
+  <h1>Events</h1>
+  <a href="{{pathFor 'Events.create'}}" role="button" class="btn btn-outline-success">Insert</a>
+  <hr>
+  {{#card title="Event list"}}
+    <table class="table table-hover table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Event</th>
+          <th scope="col">Description</th>
+          <th scope="col">Deposit</th>
+          <th scope="col">Date</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each event in events}}
+        <tr scope="row">
+          <td class="align-middle">{{event.name}}</td>
+          <td class="align-middle">{{event.description}}</td>
+          <td class="align-middle">{{event.formatDeposit}}</td>
+          <td class="align-middle">{{event.formatDate}}</td>
+          <td class="align-middle">
+            <div class="btn-group" role="group" >
+              <a href="{{pathFor 'Events.edit' event}}" role="button" class="btn btn-outline-success">Edit</a>
+              <button type="button" class="btn btn-danger" data-action="delete" data-id="{{event._id}}">Delete</button>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/card}}
+</template>

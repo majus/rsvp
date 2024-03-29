@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Class } from 'meteor/jagi:astronomy';
+import moment from 'moment';
 import { Registration } from '../registrations/model';
 import { Organiser } from '../users';
 import { Image } from '../images';
@@ -31,6 +32,17 @@ export const Event = Class.create({
     },
     formatDeposit() {
       return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
+    },
+    formatDate() {
+      return moment(this.startsAt).format('MMM Do YY, h:mm a');
+    },
+  },
+  events: {
+    beforeInsert(e) {
+      const event = e.currentTarget;
+      if (!e.trusted) {
+        event.organiserId = Meteor.userId();
+      }
     },
   },
   secured: false,
