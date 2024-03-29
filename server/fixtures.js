@@ -2,10 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import moment from 'moment';
 import { Registration } from '/api/registrations';
-import { Image } from '/api/images';
+import { Images } from '/api/images';
 import { Event } from '/api/events';
 
-const loadImage = Meteor.wrapAsync(Image.load, Image);
+const loadImage = Meteor.wrapAsync(Images.load, Images);
 
 Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {

@@ -4,7 +4,7 @@ import { Class } from 'meteor/jagi:astronomy';
 import moment from 'moment';
 import { Registration } from '../registrations/model';
 import { Organiser } from '../users';
-import { Image } from '../images';
+import { Images } from '../images';
 
 export const Event = Class.create({
   name: 'Events',
@@ -25,13 +25,15 @@ export const Event = Class.create({
       return Organiser.findOne(this.organiserId);
     },
     image() {
-      return Image.findOne(this.imageId);
+      return Images.findOne(this.imageId);
     },
     isStarted() {
       return this.startsAt < new Date();
     },
     formatDeposit() {
-      return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
+      return `${
+        this.depositAmount
+      } ${Meteor.settings.public.tick.toUpperCase()}`;
     },
     formatDate() {
       return moment(this.startsAt).format('MMM Do YY, h:mm a');

@@ -1,6 +1,6 @@
 import { GridFilesCollection } from 'meteor/majus:files-gridfs';
 
-export const Image = new GridFilesCollection({
+export const Images = new GridFilesCollection({
   collectionName: 'images',
   allowClientCode: true,
 });
