@@ -3,13 +3,13 @@ import { WebApp } from 'miku-web-app';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { AccountsTemplates } from 'meteor/useraccounts:core';
 import './ui/layout';
-import './ui/home';
+import './ui/pages/home';
+import './ui/pages/calendar';
+import './ui/pages/events';
 import './ui/pages/organiser/event/browse';
 import './ui/pages/organiser/event/edit';
 import './ui/pages/organiser/event/create';
 import './ui/pages/organiser/registration/browse';
-import './ui/calendar';
-import './ui/events';
 
 //TODO: Alternative: redirect to some route, which is "Default"
 // FlowRouter.route('/',
@@ -32,6 +32,20 @@ FlowRouter.route('/', {
   name: 'home',
   action() {
     this.render('Layout', { main: 'Home' });
+  },
+});
+
+FlowRouter.route('/calendar', {
+  name: 'Calendar',
+  action() {
+    this.render('Layout', { main: 'Calendar' });
+  },
+});
+
+FlowRouter.route('/events/:date', {
+  name: 'Events',
+  action() {
+    this.render('Layout', { main: 'Events' });
   },
 });
 
@@ -60,19 +74,5 @@ FlowRouter.route('/organiser/registrations', {
   name: 'Registrations.browse',
   action() {
     this.render('Layout', { main: 'Organiser_registrations' });
-  },
-});
-
-FlowRouter.route('/calendar', {
-  name: 'Calendar',
-  action() {
-    this.render('Layout', { main: 'Calendar' });
-  },
-});
-
-FlowRouter.route('/events/:date', {
-  name: 'Events',
-  action() {
-    this.render('Layout', { main: 'Events' });
   },
 });
