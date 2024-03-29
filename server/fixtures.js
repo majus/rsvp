@@ -54,23 +54,25 @@ Meteor.startup(() => {
         'Future Leaders Youth Summit',
         'Empowering the next generation of leaders, the Future Leaders Youth Summit is a dynamic conference designed for young people aged 14-18. Engage in workshops, inspiring talks, and group activities focused on leadership development, entrepreneurship, and global citizenship. Network with like-minded peers and mentors who are making a difference in the world. This summit is an incredible opportunity for young individuals to find their voice and realize their potential.',
       ],
-    ].forEach(([name, description]) => {
+    ].forEach(([name, description], i) => {
       const image = loadImage('https://loremflickr.com/640/480');
       const event = new Event({
         'name': name,
         'organiserId': organiserId,
-        'startsAt': moment().add(10, 'hours').toDate(),
+        'startsAt': moment()
+          .add(10 * i, 'hours')
+          .toDate(),
         'description': description,
         'imageId': image._id,
         'depositAmount': 0.001,
       });
       event.save();
       // Register attendee users
-      attendeeIds.forEach((attendeeId, index) => {
+      attendeeIds.forEach((attendeeId, j) => {
         const registration = new Registration({
           'attendeeId': attendeeId,
           'eventId': event._id,
-          'comment': index % 2 ? `Comment from Attendee ${index}` : undefined,
+          'comment': j % 2 ? `Comment from Attendee ${j}` : undefined,
         });
         registration.save();
       });
