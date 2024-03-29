@@ -5,13 +5,9 @@ export const eventSchema = new SimpleSchema({
     type: String,
     label: 'Name',
   },
-  'organiserId': {
-    type: String,
-    label: 'Organiser',
-  },
   startsAt: {
     type: Date,
-    label: 'Starts At',
+    label: 'Date',
   },
   description: {
     type: String,
@@ -19,11 +15,11 @@ export const eventSchema = new SimpleSchema({
   },
   imageId: {
     type: String,
-    label: 'ImageId',
+    label: 'Image',
   },
   depositAmount: {
     type: Number,
     label: 'Deposit',
-    min: 0.01,
+    min: 0.000001,
   },
 });

@@ -20,13 +20,12 @@ TemplateController('Organiser_event_edit', {
 AutoForm.addHooks('submitUpdate', {
   onSubmit(data) {
     this.event.preventDefault();
-    Event.update({
-      _id: FlowRouter.getParam('_id'),
-    }, {
+    Event.update(FlowRouter.getParam('_id'), {
       $set: {
-        ...data,
+        organiserId: Meteor.userId(),
+        data,
       },
     });
-    FlowRouter.go('/organiser/events');
+    FlowRouter.go('Events.list');
   },
 });

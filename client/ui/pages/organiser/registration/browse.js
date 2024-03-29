@@ -11,10 +11,8 @@ TemplateController('Organiser_registrations', {
     },
   },
   events: {
-    'click [data-action=confirm]'(event) {
-      Registration.update({
-        _id: event.currentTarget.attributes.data.value,
-      }, {
+    'click [data-action=confirm]'(e) {
+      Registration.update(e.currentTarget.dataset.id, {
         $set: {
           confirmed: true,
         },

@@ -11,8 +11,8 @@ TemplateController('Organiser_events', {
     },
   },
   events: {
-    'click [data-action=delete]'(event) {
-      Event.remove(event.currentTarget.attributes.data.value);
+    'click [data-action=delete]'(e) {
+      Event.remove(e.currentTarget.dataset.id);
     },
   },
 });

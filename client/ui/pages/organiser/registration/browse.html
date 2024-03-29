@@ -1,7 +1,7 @@
 <template name="Organiser_registrations">
-  <h1>Registrations</h1>
+  <h1>RSVPs</h1>
   <hr>
-  {{#card title="Registration list"}}
+  {{#card}}
     <table class="table table-hover table-responsive">
       <thead>
         <tr>
@@ -18,16 +18,16 @@
       <tbody>
         {{#each registration in registrations}}
         <tr scope="row">
-          <td class="align-middle">{{registration.attendee}}</td>
+          <td class="align-middle">{{registration.attendee.name}}</td>
           <td class="align-middle">{{registration.event.name}}</td>
           <td class="align-middle">{{registration.comment}}</td>
-          <td class="align-middle">{{registration.isCompleted}}</td>
+          <td class="align-middle">{{when registration.isCompleted yes='Yes' no='No'}}</td>
           <td class="align-middle">{{registration.depositAmount}}</td>
-          <td class="align-middle">{{registration.isDeposited}}</td>
-          <td class="align-middle">{{registration.isRefunded}}</td>
+          <td class="align-middle">{{when registration.isDeposited yes='Yes' no='No'}}</td>
+          <td class="align-middle">{{when registration.isRefunded yes='Yes' no='No'}}</td>
           <td class="align-middle">
             <div class="btn-group" role="group" >
-              <button type="button" class="btn btn-outline-success" data-action="confirm" data="{{registration._id}}">Confirm</button>
+              <button type="button" class="btn btn-outline-success" data-action="confirm" data-id="{{registration._id}}">Confirm</button>
             </div>
           </td>
         </tr>

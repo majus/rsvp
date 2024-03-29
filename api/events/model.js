@@ -33,8 +33,16 @@ export const Event = Class.create({
     formatDeposit() {
       return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
     },
-    formatData() {
+    formatDate() {
       return moment(this.startsAt).format('MMM Do YY, h:mm a');
+    },
+  },
+  events: {
+    beforeInsert(e) {
+      const event = e.currentTarget;
+      if (!e.trusted) {
+        event.organiserId = Meteor.userId();
+      }
     },
   },
   secured: false,

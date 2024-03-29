@@ -47,7 +47,7 @@ FlowRouter.route('/organiser/events/create', {
 });
 
 FlowRouter.route('/organiser/registrations', {
-  name: 'Events.create',
+  name: 'Registrations.create',
   action() {
     this.render('Layout', { main: 'Organiser_registrations' });
   },

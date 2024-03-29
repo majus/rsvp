@@ -37,16 +37,15 @@ export const Registration = Class.create({
       return Event.findOne(this.eventId);
     },
     attendee() {
-      return this.attendeeId;
-      // return Attendee.findOne(this.attendeeId);
+      return Attendee.findOne(this.attendeeId);
     },
     isCompleted() {
       return isBoolean(this.confirmed);
     },
-    isRefunded () {
+    isRefunded() {
       return Boolean(this.refundHash);
     },
-    isDeposited () {
+    isDeposited() {
       return Boolean(this.depositHash);
     },
   },
