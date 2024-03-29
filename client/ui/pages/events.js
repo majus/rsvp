@@ -6,6 +6,9 @@ import './events.html';
 
 TemplateController('Events', {
   helpers: {
+    date() {
+      return this.date();
+    },
     events() {
       const date = this.date();
       return Event.find(
@@ -31,7 +34,7 @@ TemplateController('Events', {
   private: {
     date() {
       const date = FlowRouter.getParam('date');
-      this.state.date = new Date(date);
+      return new Date(date);
     },
   },
 });

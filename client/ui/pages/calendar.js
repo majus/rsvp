@@ -26,7 +26,7 @@ TemplateController('Calendar', {
   },
   events: {
     'changeDate'(e) {
-      FlowRouter.go('Events', { date: e.date.toISOString().substr(0, 10) });
+      FlowRouter.go('Events', { date: moment(e.date).format('YYYY-MM-DD') });
     },
   },
   private: {
