@@ -104,7 +104,7 @@ $datepicker-border: $datepicker-bg;
 
   table tr td {
     &.day {
-      background-color: var(--tg-theme-secondary-bg-color); 
+      background-color: var(--tg-theme-hint-color, $info); 
     }
 
     &.day:hover,

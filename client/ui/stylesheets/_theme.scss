@@ -1,18 +1,18 @@
-$body-bg: var(--tg-theme-bg-color);
-$body-color: var(--tg-theme-text-color);
-$text-color: var(--tg-theme-hint-color);
-$link-color: var(--tg-theme-link-color);
-$primary: var(--tg-theme-button-color);
-$secondary: var(--tg-theme-secondary-bg-color);
-$info: var(--tg-theme-accent-text-color);
-$card-bg: var(--tg-theme-section-bg-color);
+$body-bg: var(--tg-theme-bg-color, $white);
+$body-color: var(--tg-theme-text-color, $gray-900);
+// $???: var(--tg-theme-hint-color, $gray-900);
+$link-color: var(--tg-theme-link-color, $blue);
+$primary: var(--tg-theme-button-color, $blue);
+$secondary: var(--tg-theme-secondary-bg-color, $gray-600);
+$info: var(--tg-theme-accent-text-color, $cyan);
+$card-bg: var(--tg-theme-section-bg-color, $white);
 // $card-bg: var(--tg-theme-secondary-bg-color);
 // $card-cap-bg: var(--tg-theme-section-header-text-color);
-$text-muted: var(--tg-theme-subtitle-text-color);
-$danger: var(--tg-theme-destructive-text-color);
+$text-muted: var(--tg-theme-subtitle-text-color, $gray-600);
+$danger: var(--tg-theme-destructive-text-color, $red);
 
 .btn-primary {
-  color: var(--tg-theme-button-text-color);
+  color: var(--tg-theme-button-text-color, color-yiq($blue));
 }
 
 $h1-font-size: $font-size-base * 2;
@@ -20,3 +20,12 @@ $h1-font-size: $font-size-base * 2;
 // h1, h2, h3, h4, h5, h6 {
 //   background-color: var(--tg-theme-header-bg-color);
 // }
+
+$navbar-light-color: var(--tg-theme-text-color, $gray-400);             
+$navbar-light-hover-color: var(--tg-theme-link-color, $blue);
+$navbar-light-active-color: var(--tg-theme-section-header-text-color, $blue);        
+$navbar-light-disabled-color: var(--tg-theme-link-color, $blue);      
+$navbar-light-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$gray-500}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-light-toggler-border-color: $gray-300;//var(--tg-theme-secondary-bg-color, $gray-600);
+$navbar-light-brand-color: $navbar-light-active-color;
+$navbar-light-brand-hover-color: $navbar-light-active-color;
