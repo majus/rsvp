@@ -1,0 +1,21 @@
+<template name="Events">
+  <h1 class="my-3 text-center">Chose an Event</h1>
+  {{#each event in events}}
+    <div class="mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{event.name}}</h5>
+          <p>Occurs at: {{event.startsAt}}</p>
+          <p>Deposit: {{event.formatDeposit}}</p>
+          <p class="card-text">{{event.description}}</p>
+          <button class="btn btn-primary btn-block" data-action="rsvp" data-id="{{event._id}}">RSVP</button>
+        </div>
+        {{log event.image}}
+        <img src="{{event.image.link}}" class="card-img-bottom" alt="Event image">
+      </div>
+    </div>
+  {{else}}
+    <div>No Events found on {{state.date.toDateString}}</div>
+  {{/each}}
+  <a href="{{pathFor 'Calendar'}}" class="btn btn-secondary btn-block">Back to Calendar</a>
+</template>

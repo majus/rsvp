@@ -1,5 +1,5 @@
 <template name="Home">
-  <h1>RSVP</h1>
+  <h1 class="my-3 text-center">RSVP</h1>
   <div>
     Status:
     {{#with currentUser.profile}}
@@ -16,9 +16,27 @@
     facilis aut ipsam fuga labore. Blanditiis est tempore facilis voluptatem possimus. Vero dolores cum eveniet odit
     quia et itaque. Temporibus consequatur sapiente asperiores dignissimos quis et modi aut. Totam similique ab et et
     laboriosam ex.</p>
+  {{#collapse title='Telegram theme colors'}}
+    <div style="background-color: var(--tg-theme-bg-color)">--tg-theme-bg-color</div>
+    <div style="background-color: var(--tg-theme-text-color)">--tg-theme-text-color</div>
+    <div style="background-color: var(--tg-theme-hint-color)">--tg-theme-hint-color</div>
+    <div style="background-color: var(--tg-theme-link-color)">--tg-theme-link-color</div>
+    <div style="background-color: var(--tg-theme-button-color)">--tg-theme-button-color</div>
+    <div style="background-color: var(--tg-theme-secondary-bg-color)">--tg-theme-secondary-bg-color</div>
+    <div style="background-color: var(--tg-theme-accent-text-color)">--tg-theme-accent-text-color</div>
+    <div style="background-color: var(--tg-theme-section-bg-color)">--tg-theme-section-bg-color</div>
+    <div style="background-color: var(--tg-theme-secondary-bg-color)">--tg-theme-secondary-bg-color</div>
+    <div style="background-color: var(--tg-theme-section-header-text-color)">--tg-theme-section-header-text-color
+    </div>
+    <div style="background-color: var(--tg-theme-subtitle-text-color)">--tg-theme-subtitle-text-color</div>
+    <div style="background-color: var(--tg-theme-destructive-text-color)">--tg-theme-destructive-text-color</div>
+    <div style="background-color: var(--tg-theme-button-text-color)">--tg-theme-button-text-color</div>
+    <div style="background-color: var(--tg-theme-header-bg-color)">--tg-theme-header-bg-color</div>
+  {{/collapse}}
   {{#card title="Buttons"}}
     <button class="btn btn-primary btn-block" data-action="openLink">Open Yandex</button>
     <button class="btn btn-info btn-block" data-action="requestTransfer">Request a transfer</button>
-    <button class="btn btn-danger btn-block" data-action="closeApp">Danger</button>
+    <a href="{{pathFor 'Calendar'}}" class="btn btn-warning btn-block">Open Calendar</a>
+    <button class="btn btn-danger btn-block" data-action="closeApp">Close Mini App</button>
   {{/card}}
 </template>

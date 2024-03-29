@@ -8,6 +8,8 @@ import './ui/pages/organiser/event/browse';
 import './ui/pages/organiser/event/edit';
 import './ui/pages/organiser/event/create';
 import './ui/pages/organiser/registration/browse';
+import './ui/calendar';
+import './ui/events';
 
 //TODO: Alternative: redirect to some route, which is "Default"
 // FlowRouter.route('/',
@@ -27,6 +29,7 @@ AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp');
 
 FlowRouter.route('/', {
+  name: 'home',
   action() {
     this.render('Layout', { main: 'Home' });
   },
@@ -57,5 +60,19 @@ FlowRouter.route('/organiser/registrations', {
   name: 'Registrations.browse',
   action() {
     this.render('Layout', { main: 'Organiser_registrations' });
+  },
+});
+
+FlowRouter.route('/calendar', {
+  name: 'Calendar',
+  action() {
+    this.render('Layout', { main: 'Calendar' });
+  },
+});
+
+FlowRouter.route('/events/:date', {
+  name: 'Events',
+  action() {
+    this.render('Layout', { main: 'Events' });
   },
 });

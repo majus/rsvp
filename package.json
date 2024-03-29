@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/runtime": "^7.24.1",
     "bootstrap": "^4.6.2",
+    "bootstrap-datepicker": "^1.10.0",
     "gram20-sdk": "0.0.21",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
