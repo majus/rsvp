@@ -28,6 +28,10 @@ export const Registration = Class.create({
       type: String,
       optional: true,
     },
+    'refundedAt': {
+      type: Date,
+      optional: true,
+    },
     'refundHash': {
       type: String,
       optional: true,
