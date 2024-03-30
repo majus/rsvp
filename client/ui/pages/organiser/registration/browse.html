@@ -7,30 +7,41 @@
         <tr>
           <th scope="col">Attendee</th>
           <th scope="col">Event</th>
-          <th scope="col">Comment</th>
-          <th scope="col">Completed</th>
-          <th scope="col">Deposit Ammount</th>
-          <th scope="col">Deposited</th>
-          <th scope="col">Refunded</th>
-          <th scope="col">Action</th>
+          <th scope="col">Deposit</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         {{#each registration in registrations}}
-        <tr scope="row">
-          <td class="align-middle">{{registration.attendee.name}}</td>
-          <td class="align-middle">{{registration.event.name}}</td>
-          <td class="align-middle">{{registration.comment}}</td>
-          <td class="align-middle">{{when registration.isCompleted yes='Yes' no='No'}}</td>
-          <td class="align-middle">{{registration.formatDeposit}}</td>
-          <td class="align-middle">{{when registration.isDeposited yes='Yes' no='No'}}</td>
-          <td class="align-middle">{{when registration.isRefunded yes='Yes' no='No'}}</td>
-          <td class="align-middle">
-            <div class="btn-group" role="group" >
-              <button type="button" class="btn btn-outline-success" data-action="confirm" data-id="{{registration._id}}">Confirm</button>
-            </div>
-          </td>
-        </tr>
+          <tr scope="row">
+            <td class="align-middle">{{registration.attendee.name}}</td>
+            <td class="align-middle">{{registration.event.name}}</td>
+            <td class="align-middle">{{registration.formatDeposit}}</td>
+            <td class="align-middle">
+              {{#if registration.isRefunded}}
+                Refunded
+              {{else if registration.isCompleted}}
+                Completed
+              {{else if registration.isDeposited}}
+                Deposited
+              {{else}}
+                Pending
+              {{/if}}
+            </td>
+            <td class="align-middle">
+              <div class="btn-group" role="group">
+                {{#if registration.event.isStarted}}
+                  {{#unless registration.isCompleted}}
+                    {{#if registration.isDeposited}}
+                      <button type="button" class="btn btn-outline-success" data-action="confirm"
+                        data-id="{{registration._id}}">Confirm</button>
+                    {{/if}}
+                  {{/unless}}
+                {{/if}}
+              </div>
+            </td>
+          </tr>
         {{/each}}
       </tbody>
     </table>
