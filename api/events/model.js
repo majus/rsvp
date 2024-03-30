@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Class } from 'meteor/jagi:astronomy';
 import moment from 'moment';
-import { Registration } from '../registrations/model';
 import { Organiser } from '../users';
 import { Images } from '../images';
 
@@ -18,9 +17,6 @@ export const Event = Class.create({
     'depositAmount': Number,
   },
   helpers: {
-    registrations() {
-      return Registration.find({ 'eventId': this._id }).fetch();
-    },
     organiser() {
       return Organiser.findOne(this.organiserId);
     },
@@ -48,4 +44,12 @@ export const Event = Class.create({
     },
   },
   secured: false,
+});
+
+Organiser.extend({
+  helpers: {
+    events() {
+      return Event.find({ 'organiserId': this._id }).fetch();
+    },
+  },
 });

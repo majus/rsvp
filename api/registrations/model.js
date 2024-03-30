@@ -74,3 +74,19 @@ export const Registration = Class.create({
   },
   secured: false,
 });
+
+Attendee.extend({
+  helpers: {
+    registrations() {
+      return Registration.find({ 'attendeeId': this._id }).fetch();
+    },
+  },
+});
+
+Event.extend({
+  helpers: {
+    registrations() {
+      return Registration.find({ 'eventId': this._id }).fetch();
+    },
+  },
+});

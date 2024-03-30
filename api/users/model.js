@@ -1,7 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Class } from 'meteor/jagi:astronomy';
-import { Event } from '/api/events';
-import { Registration } from '/api/registrations';
 
 const Profile = Class.create({
   name: 'UserProfile',
@@ -45,18 +43,8 @@ export const Organiser = User.inherit({
   fields: {
     'emails': [UserEmail],
   },
-  helpers: {
-    events() {
-      return Event.find({ 'organiserId': this._id }).fetch();
-    },
-  },
 });
 
 export const Attendee = User.inherit({
   name: 'Attendee',
-  helpers: {
-    registrations() {
-      return Registration.find({ 'attendeeId': this._id }).fetch();
-    },
-  },
 });
