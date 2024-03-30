@@ -20,9 +20,10 @@ TemplateController('Organiser_event_edit', {
 AutoForm.addHooks('submitUpdate', {
   onSubmit(data) {
     this.event.preventDefault();
-    Event.update(FlowRouter.getParam('_id'), {
-      $set: data,
-    });
+    Event.update(FlowRouter.getParam('_id'), { $set: data }, this.done);
+    return false;
+  },
+  onSuccess() {
     FlowRouter.go('Events.browse');
   },
 });

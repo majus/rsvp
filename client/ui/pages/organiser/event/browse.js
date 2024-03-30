@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { TemplateController } from 'meteor/space:template-controller';
 import { Event } from '/api/events';
 import './browse.html';
@@ -5,9 +6,10 @@ import './browse.html';
 TemplateController('Organiser_events', {
   helpers: {
     events() {
-      return Event.find({}, {
-        sort: { 'startsAt': 1 },
-      }).fetch();
+      return Event.find(
+        { 'organiserId': Meteor.userId() },
+        { sort: { 'createdAt': -1 } },
+      ).fetch();
     },
   },
   events: {

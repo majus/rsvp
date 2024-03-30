@@ -17,7 +17,10 @@ AutoForm.addHooks('submitCreate', {
   onSubmit(data) {
     this.event.preventDefault();
     const event = new Event(data);
-    event.save();
+    event.save(this.done);
+    return false;
+  },
+  onSuccess() {
     FlowRouter.go('Events.browse');
   },
 });

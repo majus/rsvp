@@ -12,6 +12,9 @@ export const eventSchema = new SimpleSchema({
   description: {
     type: String,
     label: 'Description',
+    autoform: {
+      type: 'textarea',
+    },
   },
   imageId: {
     type: String,
