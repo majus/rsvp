@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Class } from 'meteor/jagi:astronomy';
+import { Event } from '/api/events';
+import { Registration } from '/api/registrations';
 
 const Profile = Class.create({
   name: 'UserProfile',
@@ -11,6 +13,14 @@ const Profile = Class.create({
       type: String,
       optional: true,
     },
+  },
+});
+
+const UserEmail = Class.create({
+  name: 'UserEmail',
+  fields: {
+    'address': String,
+    'verified': Boolean,
   },
 });
 
@@ -28,4 +38,25 @@ export const User = Class.create({
     },
   },
   secured: false,
+});
+
+export const Organiser = User.inherit({
+  name: 'Organiser',
+  fields: {
+    'emails': [UserEmail],
+  },
+  helpers: {
+    events() {
+      return Event.find({ 'organiserId': this._id }).fetch();
+    },
+  },
+});
+
+export const Attendee = User.inherit({
+  name: 'Attendee',
+  helpers: {
+    registrations() {
+      return Registration.find({ 'attendeeId': this._id }).fetch();
+    },
+  },
 });

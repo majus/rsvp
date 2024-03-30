@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Registration } from '/api/registrations';
 import { Images } from '/api/images';
 import { Event } from '/api/events';
+import { Attendee } from '/api/users';
 
 const loadImage = Meteor.wrapAsync(Images.load, Images);
 
@@ -22,16 +23,23 @@ Meteor.startup(() => {
       ['Ada', 'Lovelace'],
       ['Alan', 'Turing'],
       ['Sam', 'Smith'],
-    ].map(([firstName, lastName], index) =>
-      Accounts.createUser({
-        email: `attendee+${index}@example.com`,
-        password: 'Passw0rd',
+    ].map(([firstName, lastName], index) => {
+      const username = `fake-attendee-${index}`;
+      const attendeeId = Attendee.insert({
+        services: {
+          telegram: {
+            id: String(100000000 + index),
+            username,
+          },
+        },
         profile: {
           firstName: firstName,
           lastName: lastName,
+          telegram: username,
         },
-      }),
-    );
+      });
+      return attendeeId;
+    });
     // Create events
     [
       [

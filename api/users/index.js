@@ -1,2 +1,6 @@
-export { Attendee } from './attendee/model';
-export { Organiser } from './organiser/model';
+export { Attendee, Organiser } from './model';
+
+if (Meteor.isServer) {
+  import './server/accounts';
+  import './server/publications';
+}
