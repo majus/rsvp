@@ -72,7 +72,7 @@ Meteor.startup(() => {
           .toDate(),
         'description': description,
         'imageId': image._id,
-        'depositAmount': 0.001,
+        'depositAmount': 1,
       });
       event.save();
       // Register attendee users

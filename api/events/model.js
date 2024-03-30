@@ -14,7 +14,10 @@ export const Event = Class.create({
     'startsAt': Date,
     'description': String,
     'imageId': String,
-    'depositAmount': Number,
+    'depositAmount': {
+      type: Number,
+      validators: [{ type: 'number' }],
+    },
   },
   helpers: {
     organiser() {

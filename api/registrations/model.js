@@ -63,6 +63,9 @@ export const Registration = Class.create({
       const registration = e.currentTarget;
       const event = registration.event();
       registration.depositAmount = event.depositAmount;
+      if (!e.trusted) {
+        registration.attendeeId = Meteor.userId();
+      }
     },
   },
   behaviors: {

@@ -27,8 +27,8 @@ export const eventSchema = new SimpleSchema({
     },
   },
   depositAmount: {
-    type: Number,
+    type: SimpleSchema.Integer,
     label: 'Deposit',
-    min: 0.000001,
+    min: 1,
   },
 });
