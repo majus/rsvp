@@ -2,7 +2,7 @@
   <h1>RSVPs</h1>
   <hr>
   {{#card}}
-    <table class="table table-hover table-responsive">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">Attendee</th>
@@ -34,8 +34,10 @@
                 {{#if registration.event.isStarted}}
                   {{#unless registration.isCompleted}}
                     {{#if registration.isDeposited}}
-                      <button type="button" class="btn btn-outline-success" data-action="confirm"
-                        data-id="{{registration._id}}">Confirm</button>
+                      <button type="button" class="btn btn-outline-success" data-action="markPresent"
+                        data-id="{{registration._id}}">Present</button>
+                      <button type="button" class="btn btn-outline-danger" data-action="markAbsent"
+                        data-id="{{registration._id}}">Absent</button>
                     {{/if}}
                   {{/unless}}
                 {{/if}}
