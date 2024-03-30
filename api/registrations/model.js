@@ -40,6 +40,9 @@ export const Registration = Class.create({
     attendee() {
       return Attendee.findOne(this.attendeeId);
     },
+    isConfirmed() {
+      return Boolean(this.confirmed);
+    },
     isCompleted() {
       return isBoolean(this.confirmed);
     },
@@ -50,7 +53,9 @@ export const Registration = Class.create({
       return Boolean(this.depositHash);
     },
     formatDeposit() {
-      return `${this.depositAmount} ${Meteor.settings.public.tick.toUpperCase()}`;
+      return `${
+        this.depositAmount
+      } ${Meteor.settings.public.tick.toUpperCase()}`;
     },
   },
   events: {

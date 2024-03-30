@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.24.1",
+    "@ton/core": "^0.56.3",
+    "@ton/crypto": "^3.2.0",
+    "@ton/ton": "^13.11.1",
     "bootstrap": "^4.6.2",
     "bootstrap-datepicker": "^1.10.0",
     "gram20-sdk": "0.0.21",
