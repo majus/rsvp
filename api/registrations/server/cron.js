@@ -47,7 +47,7 @@ SyncedCron.add({
   async job() {
     const registrations = Registration.find({
       'confirmed': true,
-      'refundHash': null,
+      'refundedAt': null,
     });
     for await (const registration of registrations) {
       try {
