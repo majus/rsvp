@@ -13,14 +13,13 @@ TemplateController('Event_detail', {
       const eventId = FlowRouter.getParam('_id');
       return Event.findOne(eventId);
     },
-    rsvped() {
-      return this.rsvped();
-    },
     registration() {
       return this.registration();
     },
     attendanceStatus() {
-      return this.registration().isConfirmed() ? 'Attended' : 'Waiting for attendance';
+      return this.registration().isConfirmed()
+        ? 'Attended'
+        : 'Waiting for attendance';
     },
     refundingStatus() {
       if (this.registration().isDeposited()) {
@@ -41,11 +40,14 @@ TemplateController('Event_detail', {
       const { wallet, tick } = Meteor.settings.public;
       const event = Event.findOne(e.currentTarget.dataset.id);
       try {
-        // Create Event registration
-        const registration = new Registration({
-          'eventId': event._id,
-        });
-        registration.save();
+        // Load or create Event registration
+        let registration = this.registration();
+        if (!registration) {
+          registration = new Registration({
+            'eventId': event._id,
+          });
+          registration.save();
+        }
         // Process Telegram payment
         const data = {
           type: 'transfer',
@@ -68,9 +70,6 @@ TemplateController('Event_detail', {
     date() {
       const date = FlowRouter.getParam('date');
       this.state.date = new Date(date);
-    },
-    rsvped() {
-      return this.registration();
     },
     registration() {
       const eventId = FlowRouter.getParam('_id');

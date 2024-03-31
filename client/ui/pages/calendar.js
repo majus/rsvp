@@ -1,8 +1,10 @@
 import moment from 'moment';
 import 'bootstrap-datepicker';
+import { Meteor } from 'meteor/meteor';
 import { TemplateController } from 'meteor/space:template-controller';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Event } from '/api/events';
+import { Registration } from '/api/registrations';
 import './calendar.html';
 
 TemplateController('Calendar', {
@@ -30,6 +32,14 @@ TemplateController('Calendar', {
         this.calendar.fill();
       }
     });
+  },
+  helpers: {
+    rsvps() {
+      return Registration.find(
+        { 'attendeeId': Meteor.userId() },
+        { sort: { 'createdAt': -1 } },
+      );
+    },
   },
   events: {
     'changeDate'(e) {

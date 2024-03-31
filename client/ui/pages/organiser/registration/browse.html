@@ -18,15 +18,19 @@
           <td class="align-middle">{{registration.formatDeposit}}</td>
           <td class="align-middle">
             {{#if registration.isRefunded}}
-              Refunded
+              <span class="text-primary">{{>i fa='undo'}} Refunded</span>
             {{else if registration.refundedAt}}
-              Refunding
+              <span class="text-info">{{>i fa='circle-o-notch'}} Refunding</span>
             {{else if registration.isCompleted}}
-              Completed
+              {{#if registration.isConfirmed}}
+                <span class="text-success">{{>i fa='check-circle'}} Attended</span>
+              {{else}}
+                <span class="text-warning">{{>i fa='minus-circle'}} Not attended</span>
+              {{/if}}
             {{else if registration.isDeposited}}
-              Deposited
+              <span class="text-info">{{>i fa='plus-circle'}} Deposited</span>
             {{else}}
-              Pending
+              <span>{{>i fa='question-circle'}} Pending</span>
             {{/if}}
           </td>
           <td class="align-middle">

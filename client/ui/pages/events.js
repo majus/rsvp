@@ -27,6 +27,12 @@ TemplateController('Events', {
         },
       );
     },
+    excerpt(string) {
+      if (string.length > 200) {
+        return `${string.substring(0, 200)}…`;
+      }
+      return string;
+    },
   },
   events: {
     async 'click [data-action=rsvp]'(e) {

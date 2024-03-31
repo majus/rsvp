@@ -1,4 +1,13 @@
 <template name="Calendar">
   <h1 class="my-3 text-center">Search for events</h1>
-  <div data-role="calendar"></div>
+  <div data-role="calendar" class="mb-3"></div>
+  {{#if rsvps.count}}
+    <h4 class="my-3 text-center">My RSVPs</h4>
+    <ul class="list-group">
+      {{#each rsvps}}
+        <a href="{{pathFor 'Event.detail' _id=eventId}}"
+          class="list-group-item list-group-item-action list-group-item-primary">{{event.name}}</a>
+      {{/each}}
+    </ul>
+  {{/if}}
 </template>
