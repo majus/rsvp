@@ -23,6 +23,13 @@ TemplateController('Calendar', {
       })
       .data('datepicker');
     // this.calendar.setDate(new Date());
+    this.autorun((comp) => {
+      // Reactive dependency
+      Event.find().count();
+      if (!comp.firstRun) {
+        this.calendar.fill();
+      }
+    });
   },
   events: {
     'changeDate'(e) {
