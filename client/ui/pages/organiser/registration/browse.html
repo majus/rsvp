@@ -20,6 +20,8 @@
             <td class="align-middle">
               {{#if registration.isRefunded}}
                 Refunded
+              {{else if registration.refundedAt}}
+                Refunding
               {{else if registration.isCompleted}}
                 Completed
               {{else if registration.isDeposited}}
