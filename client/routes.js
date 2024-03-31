@@ -6,6 +6,7 @@ import './ui/layout';
 import './ui/pages/home';
 import './ui/pages/calendar';
 import './ui/pages/events';
+import './ui/pages/detail';
 import './ui/pages/organiser/event/browse';
 import './ui/pages/organiser/event/edit';
 import './ui/pages/organiser/event/create';
@@ -46,6 +47,13 @@ FlowRouter.route('/events/:date', {
   name: 'Events',
   action() {
     this.render('Layout', { main: 'Events' });
+  },
+});
+
+FlowRouter.route('/events/detail/:_id', {
+  name: 'Event.detail',
+  action() {
+    this.render('Layout', { main: 'Event_detail' });
   },
 });
 

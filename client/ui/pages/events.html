@@ -8,7 +8,7 @@
           <p>Occurs at: {{event.startsAt}}</p>
           <p>Deposit: {{event.formatDeposit}}</p>
           <p class="card-text">{{event.description}}</p>
-          <button class="btn btn-primary btn-block" data-action="rsvp" data-id="{{event._id}}">RSVP</button>
+          <a href="{{pathFor 'Event.detail' event}}" role="button" class="btn btn-primary btn-block">RSVP</a>
         </div>
         <img src="{{event.image.link}}" class="card-img-bottom" alt="Event image">
       </div>

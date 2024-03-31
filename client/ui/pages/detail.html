@@ -1,0 +1,22 @@
+<template name="Event_detail">
+  <h1 class="my-3 text-center">Event detail</h1>
+    <div class="mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{event.name}}</h5>
+          <p>Occurs at: {{event.startsAt}}</p>
+          <p>Deposit: {{event.formatDeposit}}</p>
+          <p class="card-text">{{event.description}}</p>
+          {{#if not rsvped}}
+            <button type="button" class="btn btn-outline-success" data-action="rsvp" data-id="{{event._id}}">Registrate</button>
+          {{else}}
+          <p class="card-text">Attendance status: {{attendanceStatus}}</p>
+          {{#if registration.isConfirmed}}
+              <p class="card-text">Refunding Status: {{refundingStatus}}</p>
+            {{/if}}
+          {{/if}}
+        </div>
+        <img src="{{event.image.link}}" class="card-img-bottom" alt="Event image">
+      </div>
+    </div>
+</template>
