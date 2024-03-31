@@ -5,6 +5,7 @@ import qs from 'query-string';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { check, Match } from 'meteor/check';
+import { Attendee } from '/api/users';
 
 const { botToken } = Meteor.settings;
 
@@ -59,7 +60,7 @@ Accounts.registerLoginHandler('telegram', (options) => {
     };
   }
   // Register a new user
-  const userId = Meteor.users.insert({
+  const attendee = new Attendee({
     'profile': {
       'firstName': data.first_name,
       'lastName': data.last_name,
@@ -73,5 +74,6 @@ Accounts.registerLoginHandler('telegram', (options) => {
       },
     },
   });
-  return { userId, token: resumeToken(userId) };
+  attendee.save();
+  return { userId: attendee._id, token: resumeToken(attendee._id) };
 });
