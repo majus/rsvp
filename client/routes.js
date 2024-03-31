@@ -28,14 +28,14 @@ Meteor.startup(async () => {
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp');
 
-FlowRouter.route('/', {
-  name: 'home',
-  action() {
-    this.render('Layout', { main: 'Home' });
-  },
-});
+// FlowRouter.route('/', {
+//   name: 'home',
+//   action() {
+//     this.render('Layout', { main: 'Home' });
+//   },
+// });
 
-FlowRouter.route('/calendar', {
+FlowRouter.route('/', {
   name: 'Calendar',
   action() {
     this.render('Layout', { main: 'Calendar' });
